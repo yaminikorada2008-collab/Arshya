@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXORA - AI College Assistant</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#050816;
+    color:white;
+}
+
+
+/* NAVBAR */
+
+nav{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:#080c20;
+    border-bottom:1px solid #202642;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#7c6cff;
+}
+
+nav a{
+    color:#b7bdd4;
+    text-decoration:none;
+    margin:0 15px;
+}
+
+nav a:hover{
+    color:white;
+}
+
+.nav-btn{
+    background:white;
+    color:#080c20;
+    border:0;
+    padding:11px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+
+/* HERO */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:80px 8%;
+    background:
+    radial-gradient(circle at 80% 40%,#30278a55,transparent 30%),
+    #050816;
+}
+
+.hero-text{
+    width:55%;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border:1px solid #393d63;
+    border-radius:20px;
+    color:#aaa4ff;
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:65px;
+    line-height:1.05;
+    margin-bottom:25px;
+}
+
+h1 span{
+    color:#8073ff;
+}
+
+.hero p{
+    color:#969db7;
+    font-size:17px;
+    line-height:1.7;
+    max-width:600px;
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+.primary{
+    padding:14px 22px;
+    border:0;
+    border-radius:10px;
+    background:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.secondary{
+    padding:13px 22px;
+    margin-left:10px;
+    border:1px solid #363b5a;
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+}
+
+
+/* AI CARD */
+
+.ai-card{
+    width:380px;
+    padding:25px;
+    border-radius:25px;
+    background:#11162d;
+    border:1px solid #2c3150;
+    box-shadow:0 0 60px #5146d933;
+}
+
+.ai-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.ai-icon{
+    width:45px;
+    height:45px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    background:linear-gradient(135deg,#786cff,#45dfff);
+    font-size:22px;
+}
+
+.online{
+    color:#4ee49e;
+    font-size:12px;
+}
+
+.question{
+    background:#222743;
+    padding:13px;
+    border-radius:14px;
+    margin:12px 0;
+    text-align:right;
+}
+
+.answer{
+    background:#191d39;
+    padding:15px;
+    border-radius:14px;
+    line-height:1.6;
+    color:#d7daeb;
+}
+
+
+/* FEATURES */
+
+.features{
+    padding:90px 8%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.title h2{
+    font-size:40px;
+    margin:12px;
+}
+
+.title p{
+    color:#858da8;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    padding:30px;
+    background:#0c1125;
+    border:1px solid #222844;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#6d62ff;
+}
+
+.icon{
+    font-size:32px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#858da8;
+    line-height:1.6;
+}
+
+
+/* CHATBOT */
+
+.assistant{
+    padding:90px 8%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+}
+
+.assistant-text{
+    width:40%;
+}
+
+.assistant-text h2{
+    font-size:48px;
+    margin:15px 0;
+}
+
+.assistant-text p{
+    color:#858da8;
+    line-height:1.7;
+}
+
+.chat{
+    width:500px;
+    height:580px;
+    background:#0c1125;
+    border:1px solid #292e4c;
+    border-radius:25px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+}
+
+.chat-head{
+    padding:18px;
+    border-bottom:1px solid #252a45;
+    display:flex;
+    justify-content:space-between;
+}
+
+.chat-body{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.msg{
+    padding:13px 15px;
+    margin-bottom:15px;
+    border-radius:15px;
+    max-width:80%;
+    line-height:1.5;
+}
+
+.ai{
+    background:#191d39;
+}
+
+.user{
+    background:#5e54dd;
+    margin-left:auto;
+}
+
+.quick{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.quick button{
+    padding:8px 10px;
+    border-radius:10px;
+    border:1px solid #303653;
+    background:#151a31;
+    color:#ccd0e0;
+    cursor:pointer;
+}
+
+.input-area{
+    padding:15px;
+    display:flex;
+    gap:8px;
+    border-top:1px solid #252a45;
+}
+
+.input-area input{
+    flex:1;
+    padding:13px;
+    border:1px solid #303653;
+    border-radius:10px;
+    outline:none;
+    background:#151a31;
+    color:white;
+}
+
+.send{
+    width:45px;
+    border:0;
+    border-radius:10px;
+    background:white;
+    cursor:pointer;
+}
+
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:45px;
+    border-top:1px solid #202642;
+    color:#777f9c;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav a{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text{
+        width:100%;
+    }
+
+    h1{
+        font-size:45px;
+    }
+
+    .ai-card{
+        width:100%;
+        margin-top:50px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .assistant{
+        flex-direction:column;
+    }
+
+    .assistant-text{
+        width:100%;
+        text-align:center;
+    }
+
+    .chat{
+        width:100%;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        ✦ <span>NEXORA</span>
+    </div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#assistant">AI Assistant</a>
+    </div>
+
+    <button class="nav-btn"
+    onclick="openAssistant()">
+        Ask NEXORA
+    </button>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <div class="badge">
+            🤖 AI Powered College Assistant
+        </div>
+
+        <h1>
+            Your Campus.<br>
+            <span>Your AI.</span><br>
+            Your Future.
+        </h1>
+
+        <p>
+            NEXORA is your intelligent college companion.
+            Get instant information about academics,
+            events, campus facilities and placements.
+        </p>
+
+        <div class="buttons">
+
+            <button class="primary"
+            onclick="openAssistant()">
+                Start Chatting ✨
+            </button>
+
+            <a href="#features"
+            class="secondary">
+                Explore Features
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- AI PREVIEW -->
+
+    <div class="ai-card">
+
+        <div class="ai-top">
+
+            <div class="ai-icon">
+                ✦
+            </div>
+
+            <div>
+                <b>NEXORA AI</b><br>
+                <span class="online">
+                    ● Online
+                </span>
+            </div>
+
+        </div>
+
+        <div class="question">
+            Where is the AI Lab?
+        </div>
+
+        <div class="answer">
+
+            ✦ The AI Lab is located in
+            <b>Block B – 2nd Floor.</b>
+
+            <br><br>
+
+            📍 Campus navigation available.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features"
+id="features">
+
+    <div class="title">
+
+        <small>SMART CAMPUS</small>
+
+        <h2>
+            Everything in one place.
+        </h2>
+
+        <p>
+            NEXORA connects students with
+            their college information.
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">🤖</div>
+
+            <h3>AI Assistant</h3>
+
+            <p>
+                Ask questions and receive
+                instant college information.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📚</div>
+
+            <h3>Academics</h3>
+
+            <p>
+                Find subjects, classrooms
+                and academic information.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📅</div>
+
+            <h3>Events</h3>
+
+            <p>
+                Discover workshops,
+                seminars and college events.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💼</div>
+
+            <h3>Placements</h3>
+
+            <p>
+                Explore companies,
+                eligibility and preparation.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🗺️</div>
+
+            <h3>Campus Map</h3>
+
+            <p>
+                Find labs, library,
+                classrooms and facilities.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎯</div>
+
+            <h3>Skill Tracker</h3>
+
+            <p>
+                Track your skills and
+                build your career roadmap.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ASSISTANT -->
+
+<section class="assistant"
+id="assistant">
+
+    <div class="assistant-text">
+
+        <small>MEET YOUR AI</small>
+
+        <h2>
+            Ask NEXORA anything.
+        </h2>
+
+        <p>
+            Your college information is
+            just one question away.
+        </p>
+
+    </div>
+
+
+    <!-- CHAT -->
+
+    <div class="chat">
+
+        <div class="chat-head">
+
+            <div>
+                <b>✦ NEXORA AI</b><br>
+
+                <span class="online">
+                    ● College Assistant
+                </span>
+            </div>
+
+            <button onclick="clearChat()">
+                ↻
+            </button>
+
+        </div>
+
+
+        <div class="chat-body"
+        id="chatBody">
+
+            <div class="msg ai">
+
+                Hello! 👋<br><br>
+
+                I'm <b>NEXORA</b>,
+                your AI College Assistant.
+
+                <br><br>
+
+                How can I help you?
+
+            </div>
+
+
+            <div class="quick">
+
+                <button onclick="ask('AI Lab')">
+                    📍 AI Lab
+                </button>
+
+                <button onclick="ask('Events')">
+                    📅 Events
+                </button>
+
+                <button onclick="ask('Placements')">
+                    💼 Placements
+                </button>
+
+                <button onclick="ask('Facilities')">
+                    🏫 Facilities
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="input-area">
+
+            <input
+            id="input"
+            placeholder="Ask NEXORA..."
+            onkeydown="enterKey(event)"
+            >
+
+            <button
+            class="send"
+            onclick="send()">
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>✦ NEXORA</h3>
+
+    <p>
+        AI College Assistant
+    </p>
+
+    <small>
+        Created for College Expo 🚀
+    </small>
+
+</footer>
+
+
+
+<script>
+
+/* OPEN CHAT */
+
+function openAssistant(){
+
+    document
+    .getElementById("assistant")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* SEND */
+
+function send(){
+
+    let input =
+    document.getElementById("input");
+
+    let text =
+    input.value.trim();
+
+    if(text==="") return;
+
+    addUser(text);
+
+    input.value="";
+
+    setTimeout(function(){
+
+        let reply =
+        getReply(text);
+
+        addAI(reply);
+
+    },500);
+
+}
+
+
+/* ENTER */
+
+function enterKey(event){
+
+    if(event.key==="Enter"){
+        send();
+    }
+
+}
+
+
+/* QUICK QUESTIONS */
+
+function ask(text){
+
+    document
+    .getElementById("input")
+    .value=text;
+
+    send();
+
+}
+
+
+/* USER MESSAGE */
+
+function addUser(text){
+
+    let body =
+    document.getElementById("chatBody");
+
+    let msg =
+    document.createElement("div");
+
+    msg.className="msg user";
+
+    msg.innerHTML=text;
+
+    body.appendChild(msg);
+
+    body.scrollTop=body.scrollHeight;
+
+}
+
+
+/* AI MESSAGE */
+
+function addAI(text){
+
+    let body =
+    document.getElementById("chatBody");
+
+    let msg =
+    document.createElement("div");
+
+    msg.className="msg ai";
+
+    msg.innerHTML=text;
+
+    body.appendChild(msg);
+
+    body.scrollTop=body.scrollHeight;
+
+}
+
+
+/* AI RESPONSES */
+
+function getReply(text){
+
+    text=text.toLowerCase();
+
+
+    if(
+        text.includes("lab") ||
+        text.includes("ai lab")
+    ){
+
+        return `
+        📍 <b>AI Lab</b><br><br>
+
+        The AI Lab is located at
+        <b>Block B – 2nd Floor.</b><br><br>
+
+        🧭 You can use the Campus Map
+        for navigation.
+        `;
+
+    }
+
+
+    if(
+        text.includes("event")
+    ){
+
+        return `
+        📅 <b>Upcoming Events</b><br><br>
+
+        • AI & Data Science Expo<br>
+        • Web Development Workshop<br>
+        • Python Coding Contest<br>
+        • Placement Awareness Session
+        `;
+
+    }
+
+
+    if(
+        text.includes("placement") ||
+        text.includes("company")
+    ){
+
+        return `
+        💼 <b>Placement Hub</b><br><br>
+
+        NEXORA provides information about
+        companies, eligibility, required skills
+        and placement preparation.
+        `;
+
+    }
+
+
+    if(
+        text.includes("facility") ||
+        text.includes("facilities")
+    ){
+
+        return `
+        🏫 <b>Campus Facilities</b><br><br>
+
+        • AI Lab<br>
+        • Computer Labs<br>
+        • Library<br>
+        • Seminar Hall<br>
+        • Canteen<br>
+        • Sports Area
+        `;
+
+    }
+
+
+    if(
+        text.includes("hello") ||
+        text.includes("hi") ||
+        text.includes("hey")
+    ){
+
+        return `
+        Hello! 👋<br><br>
+
+        I'm <b>NEXORA</b>,
+        your AI College Assistant.<br><br>
+
+        Ask me about labs, events,
+        placements or facilities.
+        `;
+
+    }
+
+
+    if(text.includes("python")){
+
+        return `
+        🐍 <b>Python Roadmap</b><br><br>
+
+        1. Variables<br>
+        2. Operators<br>
+        3. Conditions<br>
+        4. Loops<br>
+        5. Functions<br>
+        6. Data Structures
+        `;
+
+    }
+
+
+    return `
+        🤖 I'm still learning!<br><br>
+
+        Try asking me about:<br><br>
+
+        📍 AI Lab<br>
+        📅 Events<br>
+        💼 Placements<br>
+        🏫 Facilities<br>
+        🐍 Python
+    `;
+
+}
+
+
+/* CLEAR CHAT */
+
+function clearChat(){
+
+    document
+    .getElementById("chatBody")
+    .innerHTML=`
+
+        <div class="msg ai">
+
+            Hello again! 👋<br><br>
+
+            I'm <b>NEXORA</b>.
+
+            <br><br>
+
+            How can I help you?
+
+        </div>
+
+    `;
+
+}
+
+</script>
+
+</body>
+</html>
